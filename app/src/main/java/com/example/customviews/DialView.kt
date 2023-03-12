@@ -42,6 +42,20 @@ class DialView @JvmOverloads constructor(
         typeface = Typeface.create("", Typeface.BOLD)
     }
 
+    init {
+        isClickable = true
+    }
+
+    override fun performClick(): Boolean {
+        if (super.performClick()) return true
+
+        fanSpeed = fanSpeed.next()
+        contentDescription = resources.getString(fanSpeed.label)
+
+        invalidate()
+        return true
+    }
+
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         // calculate the current radius of the dial's circle element
         radius = (min(w, h) / 2.0 * 0.8).toFloat()
