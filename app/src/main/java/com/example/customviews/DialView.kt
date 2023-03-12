@@ -13,6 +13,13 @@ private enum class FanSpeed(val label: Int) {
     LOW(R.string.fan_low),
     MEDIUM(R.string.fan_medium),
     HIGH(R.string.fan_high),
+
+    fun next() = when (this) {
+            OFF -> LOW
+            LOW -> MEDIUM
+            MEDIUM -> HIGH
+            HIGH -> OFF
+    }
 }
 private const val RADIUS_OFFSET_LABEL = 30
 private const val RADIUS_OFFSET_INDICATOR = -35
